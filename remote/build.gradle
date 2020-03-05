@@ -1,7 +1,6 @@
 import com.koidev.stack_overflow_stars.*
 
-apply plugin: 'java-library'
-apply plugin: 'kotlin'
+apply plugin: "kotlin"
 
 dependencies {
     implementation project(":data")

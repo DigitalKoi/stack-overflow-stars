@@ -1,11 +1,11 @@
 import com.koidev.stack_overflow_stars.Libs
 
-apply plugin: 'java-library'
 apply plugin: 'kotlin'
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation Libs.Kotlin.stdlib
+    implementation Libs.RxJava.rxKotlin
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_7
