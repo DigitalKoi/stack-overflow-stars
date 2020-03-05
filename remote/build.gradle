@@ -7,11 +7,11 @@ dependencies {
 
     implementation Libs.Kotlin.stdlib
     implementation Libs.RxJava.rxKotlin
-    implementation Libs.OkHttp.okhttp
-    implementation Libs.OkHttp.loggingInterceptor
-    implementation Libs.Retrofit.retrofit
-    implementation Libs.Retrofit.gsonConverter
-    implementation Libs.Retrofit.retrofit_rxjava_adapter
+    api Libs.OkHttp.okhttp
+    api Libs.OkHttp.loggingInterceptor
+    api Libs.Retrofit.retrofit
+    api Libs.Retrofit.gsonConverter
+    api Libs.Retrofit.retrofit_rxjava_adapter
 //    implementation Libs.javaAnnotation
 //    implementation Libs.javaInject
 }

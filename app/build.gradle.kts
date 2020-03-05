@@ -5,8 +5,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("android.extensions")
-    id("kotlin-kapt")
-    id("kotlin-android")
+    kotlin("kapt")
 }
 
 android {
@@ -43,6 +42,11 @@ android {
                 "\"https://maps.googleapis.com/maps/api/\""
             )
         }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
 
