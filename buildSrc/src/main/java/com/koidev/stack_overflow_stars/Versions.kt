@@ -123,7 +123,7 @@ object Libs {
     }
 
     object OkHttp {
-        private const val version = "3.11.0"
+        private const val version = "4.4.0"
         const val okhttp = "com.squareup.okhttp3:okhttp:$version"
         const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$version"
     }
