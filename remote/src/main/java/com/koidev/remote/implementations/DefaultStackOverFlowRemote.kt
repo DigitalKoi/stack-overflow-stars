@@ -1,7 +1,7 @@
 package com.koidev.remote.implementations
 
 import com.koidev.data.model.QuestionEntity
-import com.koidev.data.questions.StackOverFlowRemote
+import com.koidev.data.repository.questions.StackOverFlowRemote
 import com.koidev.remote.mapper.toEntity
 import com.koidev.remote.model.QuestionResponse
 import com.koidev.remote.service.api.StackOverFlowApi

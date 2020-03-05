@@ -1,4 +1,4 @@
-package com.koidev.data.questions
+package com.koidev.data.repository.questions
 
 import com.koidev.data.model.QuestionEntity
 import io.reactivex.Observable
