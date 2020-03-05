@@ -1,4 +1,4 @@
-package com.example.remote.model
+package com.koidev.remote.model
 
 import com.google.gson.annotations.SerializedName
 

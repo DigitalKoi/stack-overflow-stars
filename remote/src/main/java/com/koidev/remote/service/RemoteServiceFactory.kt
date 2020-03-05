@@ -1,7 +1,7 @@
-package com.example.remote.service
+package com.koidev.remote.service
 
-import com.example.remote.service.api.StackOverFlowApi
 import com.google.gson.Gson
+import com.koidev.remote.service.api.StackOverFlowApi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory

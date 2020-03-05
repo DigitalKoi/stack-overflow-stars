@@ -1,4 +1,4 @@
-package com.example.remote.service.httjp
+package com.koidev.remote.service.httjp
 
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

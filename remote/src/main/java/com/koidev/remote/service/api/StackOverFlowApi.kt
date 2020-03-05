@@ -1,6 +1,6 @@
-package com.example.remote.service.api
+package com.koidev.remote.service.api
 
-import com.example.remote.model.QuestionResponse
+import com.koidev.remote.model.QuestionResponse
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query

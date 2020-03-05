@@ -1,4 +1,4 @@
-package com.example.remote.service.interceptor
+package com.koidev.remote.service.interceptor
 
 import okhttp3.Interceptor
 import okhttp3.Response
