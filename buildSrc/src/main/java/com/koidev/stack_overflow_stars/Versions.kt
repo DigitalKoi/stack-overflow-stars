@@ -25,17 +25,8 @@ object Libs {
 
     const val leakCanary = "com.squareup.leakcanary:leakcanary-android:2.2"
 
-    object Koin {
-        private const val version = "2.1.1"
-        const val scope = "org.koin:koin-androidx-scope:$version"
-        const val viewmodel = "org.koin:koin-androidx-viewmodel:$version"
-        const val fragment = "org.koin:koin-androidx-fragment:$version"
-        const val ext = "org.koin:koin-androidx-ext:$version"
-    }
-
     object Google {
         const val material = "com.google.android.material:material:1.1.0"
-        const val crashlytics = "com.crashlytics.sdk.android:crashlytics:2.10.1"
     }
 
     object Kotlin {
@@ -60,7 +51,6 @@ object Libs {
         const val collection = "androidx.collection:collection-ktx:1.1.0"
         const val palette = "androidx.palette:palette:1.0.0"
         const val recyclerview = "androidx.recyclerview:recyclerview:1.1.0"
-        const val emoji = "androidx.emoji:emoji:1.0.0"
         const val swiperefresh = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha03"
 
         object Navigation {
@@ -131,14 +121,9 @@ object Libs {
     }
 
     object OkHttp {
-        private const val version = "4.4.0"
+        private const val version = "3.11.0"
         const val okhttp = "com.squareup.okhttp3:okhttp:$version"
         const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$version"
-    }
-
-    object Coil {
-        private const val version = "0.9.5"
-        const val coil = "io.coil-kt:coil:$version"
     }
 
     object Roomigrant {

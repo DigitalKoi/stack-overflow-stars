@@ -60,4 +60,8 @@ dependencies {
     testImplementation(Libs.junit)
     testImplementation(Libs.AndroidX.Test.espressoCore)
 
+    implementation(project(":domain"))
+    implementation(project(":data"))
+    implementation(project(":remote"))
+    implementation(project(":persistence"))
 }
