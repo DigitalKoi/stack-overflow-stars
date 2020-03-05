@@ -6,6 +6,7 @@ plugins {
     kotlin("android")
     kotlin("android.extensions")
     id("kotlin-kapt")
+    id("kotlin-android")
 }
 
 android {
@@ -32,6 +33,17 @@ android {
         }
     }
 
+    flavorDimensions("environment")
+
+    productFlavors {
+        create("dev") {
+            buildConfigField(
+                "String",
+                "DIRECTIONS_URL",
+                "\"https://maps.googleapis.com/maps/api/\""
+            )
+        }
+    }
 }
 
 dependencies {

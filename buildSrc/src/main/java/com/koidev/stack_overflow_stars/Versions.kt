@@ -7,7 +7,7 @@ object Versions {
 object Build {
     const val compileSdk = 29
     const val buildTools = "29.0.3"
-    const val minSdk = 21
+    const val minSdk = 23
     const val versionCode = 1
     const val versionName = "1.0"
     const val appId = "com.koidev.stack_overflow_stars"
@@ -22,6 +22,9 @@ object Libs {
     const val junit = "junit:junit:4.13"
     const val robolectric = "org.robolectric:robolectric:4.3.1"
     const val mockK = "io.mockk:mockk:1.9.3"
+
+    const val javaAnnotation = "javax.annotation:jsr250-api:1.0"
+    const val javaInject ="javax.inject:javax.inject:1"
 
     const val leakCanary = "com.squareup.leakcanary:leakcanary-android:2.2"
 
