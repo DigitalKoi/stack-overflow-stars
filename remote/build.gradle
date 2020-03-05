@@ -1,0 +1,19 @@
+import com.koidev.stack_overflow_stars.*
+
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation project(":data")
+
+    implementation Libs.Kotlin.stdlib
+    implementation Libs.OkHttp.okhttp
+    implementation Libs.OkHttp.loggingInterceptor
+    implementation Libs.Retrofit.retrofit
+    implementation Libs.Retrofit.gsonConverter
+    implementation Libs.Retrofit.retrofit_rxjava_adapter
+
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
