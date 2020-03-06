@@ -23,7 +23,7 @@ class DataModule {
     fun provideStackOverFlowDataStoreFactory(
         cache: StackOverFlowCacheDataStore,
         remote: StackOverFlowRemoteDataStore
-    ) = StackOverFlowFactory(remote)
+    ) = StackOverFlowFactory(cache, remote)
 
     @Singleton @Provides
     fun provideStackOverFlowCacheStoreFactory() = StackOverFlowCacheDataStore()
@@ -35,4 +35,5 @@ class DataModule {
     @Singleton @Provides
     fun provideStackOverFlowRemote(api: StackOverFlowApi): StackOverFlowRemote =
         DefaultStackOverFlowRemote(api)
+
 }
