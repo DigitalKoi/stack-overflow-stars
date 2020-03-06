@@ -44,6 +44,17 @@ android {
         }
     }
 
+    sourceSets {
+        getByName("main").java.srcDirs("src/main/java")
+        getByName("main").res.srcDirs(
+            "src/main/res/layout/activity",
+            "src/main/res/layout/fragment",
+            "src/main/res/layout",
+            "src/main/res/layout/include",
+            "src/main/res"
+        )
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -64,6 +75,9 @@ dependencies {
     implementation(Libs.AndroidX.Navigation.ui)
     implementation(Libs.Google.material)
 
+    implementation(Libs.RxJava.rxKotlin)
+    implementation(Libs.RxJava.rxAndroid)
+    implementation(Libs.RxJava.rxRelay)
 
     implementation(Libs.Dagger.androidSupport)
     kapt(Libs.Dagger.compiler)

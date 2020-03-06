@@ -43,8 +43,9 @@ object Libs {
     object RxJava {
         private const val version = "2.4.0"
         const val rxJava = "io.reactivex.rxjava2:rxjava:$version"
-        const val rxAndroid = "io.reactivex.rxjava2:rxandroid:$version"
+        const val rxAndroid = "io.reactivex.rxjava2:rxandroid:2.1.1"
         const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:$version"
+        const val rxRelay = "com.jakewharton.rxrelay2:rxrelay:2.1.1"
     }
 
     object AndroidX {
