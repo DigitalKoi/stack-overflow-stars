@@ -1,4 +1,4 @@
-package com.koidev.stackoverflowstars.navigation
+package com.koidev.stack_overflow_stars.navigation
 
 import androidx.fragment.app.Fragment
 import com.koidev.stack_overflow_stars.ui.QuestionsLIstFragment

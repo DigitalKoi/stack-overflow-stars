@@ -1,4 +1,4 @@
-package com.koidev.stackoverflowstars.di.module
+package com.koidev.stack_overflow_stars.di.module
 
 import dagger.Module
 import dagger.Provides

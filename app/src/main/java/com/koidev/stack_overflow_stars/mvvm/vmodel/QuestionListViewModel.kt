@@ -5,8 +5,8 @@ import com.jakewharton.rxrelay2.ReplayRelay
 import com.koidev.domain.Question
 import com.koidev.domain.common.disposedBy
 import com.koidev.domain.interactor.GetQuestionsList
+import com.koidev.stack_overflow_stars.navigation.Screens
 import com.koidev.stack_overflow_stars.utils.Paginator
-import com.koidev.stackoverflowstars.navigation.Screens
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver

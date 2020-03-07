@@ -49,8 +49,9 @@ android {
         getByName("main").res.srcDirs(
             "src/main/res/layout/activity",
             "src/main/res/layout/fragment",
+            "src/main/res/layout/item",
+            "src/main/res/layout/widget",
             "src/main/res/layout",
-            "src/main/res/layout/include",
             "src/main/res"
         )
     }
@@ -80,6 +81,7 @@ dependencies {
     implementation(Libs.RxJava.rxRelay)
 
     implementation(Libs.Dagger.androidSupport)
+    implementation(Libs.AndroidX.cardview)
     kapt(Libs.Dagger.compiler)
     kapt(Libs.Dagger.androidProcessor)
 

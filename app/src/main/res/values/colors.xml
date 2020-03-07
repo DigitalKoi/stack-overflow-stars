@@ -3,4 +3,8 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+
+    <color name="sanMarino">#3F51B5</color>
+    <color name="woodsmoke">#0D0E12</color>
 </resources>
