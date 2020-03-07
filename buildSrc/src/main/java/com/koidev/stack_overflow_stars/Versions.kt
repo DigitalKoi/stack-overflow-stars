@@ -26,6 +26,8 @@ object Libs {
     const val javaAnnotation = "javax.annotation:jsr250-api:1.0"
     const val javaInject ="javax.inject:javax.inject:1"
 
+    const val cicerone = "ru.terrakok.cicerone:cicerone:5.1.0"
+
     const val leakCanary = "com.squareup.leakcanary:leakcanary-android:2.2"
 
     object Google {

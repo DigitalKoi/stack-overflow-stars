@@ -2,15 +2,22 @@ package com.koidev.stack_overflow_stars.mvvm.vmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.koidev.domain.Question
 import com.koidev.domain.interactor.GetQuestionsList
+import com.koidev.stack_overflow_stars.utils.Paginator
+import ru.terrakok.cicerone.Router
 
 class QuestionListViewModelFactory(
-    private val getQuestionsList: GetQuestionsList
+    private val router: Router,
+    private val getQuestionsList: GetQuestionsList,
+    private val paginator: Paginator.Store<Question>
 ) : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T =
         QuestionListViewModel(
-            getQuestionsList = getQuestionsList
+            router = router,
+            getQuestionsList = getQuestionsList,
+            paginator = paginator
         ) as T
 }

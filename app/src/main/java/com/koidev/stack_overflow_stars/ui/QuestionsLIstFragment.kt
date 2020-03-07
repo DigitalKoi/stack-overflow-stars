@@ -21,6 +21,9 @@ class QuestionsLIstFragment : BaseFragment() {
     @Inject
     lateinit var factory: QuestionListViewModelFactory
 
+    companion object {
+        fun newInstance() = QuestionsLIstFragment()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

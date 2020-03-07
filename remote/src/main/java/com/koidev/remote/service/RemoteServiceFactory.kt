@@ -1,6 +1,6 @@
 package com.koidev.remote.service
 
-import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.koidev.remote.service.api.StackOverFlowApi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -16,8 +16,12 @@ class RemoteServiceFactory(
         .build()
         .create(StackOverFlowApi::class.java)
 
+    private val gson = GsonBuilder()
+        .setLenient()
+        .create()
+
     private val builder = Retrofit.Builder()
         .client(client)
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .addConverterFactory(GsonConverterFactory.create(Gson()))
+        .addConverterFactory(GsonConverterFactory.create(gson))
 }
