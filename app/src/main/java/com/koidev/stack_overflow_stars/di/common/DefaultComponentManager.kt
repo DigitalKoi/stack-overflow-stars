@@ -8,6 +8,7 @@ import com.koidev.stack_overflow_stars.di.module.AppModule
 import com.koidev.stack_overflow_stars.di.module.DataModule
 import com.koidev.stack_overflow_stars.di.module.NetworkModule
 import com.koidev.stack_overflow_stars.di.module.questions.QuestionsListModule
+import com.koidev.stackoverflowstars.di.module.NavigationModule
 
 class DefaultComponentManager constructor(context: Context) : ComponentManager {
 
@@ -15,6 +16,7 @@ class DefaultComponentManager constructor(context: Context) : ComponentManager {
         .appModule(AppModule(context))
         .networkModule(NetworkModule(BuildConfig.DIRECTIONS_URL))
         .dataModule(DataModule())
+        .navigationModule(NavigationModule())
         .build()
 
     private var questionsListSubComponent: QuestionsListSubComponent? = null

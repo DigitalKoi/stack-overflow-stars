@@ -5,6 +5,7 @@ import com.koidev.stack_overflow_stars.di.module.AppModule
 import com.koidev.stack_overflow_stars.di.module.DataModule
 import com.koidev.stack_overflow_stars.di.module.NetworkModule
 import com.koidev.stack_overflow_stars.di.module.questions.QuestionsListModule
+import com.koidev.stackoverflowstars.di.module.NavigationModule
 import dagger.Component
 import javax.inject.Singleton
 
@@ -12,7 +13,8 @@ import javax.inject.Singleton
 @Component(modules = [
     (AppModule::class),
     (NetworkModule::class),
-    (DataModule::class)
+    (DataModule::class),
+    (NavigationModule::class)
 ])
 interface MainComponent {
 

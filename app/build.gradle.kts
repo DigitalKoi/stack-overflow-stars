@@ -39,7 +39,7 @@ android {
             buildConfigField(
                 "String",
                 "DIRECTIONS_URL",
-                "\"https://maps.googleapis.com/maps/api/\""
+                "\"http://api.stackexchange.com/2.2/\""
             )
         }
     }
@@ -82,6 +82,8 @@ dependencies {
     implementation(Libs.Dagger.androidSupport)
     kapt(Libs.Dagger.compiler)
     kapt(Libs.Dagger.androidProcessor)
+
+    implementation(Libs.cicerone)
 
     implementation(Libs.timber)
 

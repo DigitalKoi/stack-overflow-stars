@@ -1,9 +1,11 @@
 package com.koidev.stack_overflow_stars.utils
 
 import com.jakewharton.rxrelay2.PublishRelay
+import com.koidev.stack_overflow_stars.global.UiThread
 import io.reactivex.Observable
 import timber.log.Timber
 import java.util.concurrent.Executors
+import javax.inject.Inject
 
 object Paginator {
 
@@ -114,7 +116,7 @@ object Paginator {
             }
         }
 
-    class Store<T> {
+    class Store<T> @Inject constructor(uiThread: UiThread) {
         private var state: State = Paginator.State.Empty
         var render: (State) -> Unit = {}
             set(value) {
@@ -127,6 +129,7 @@ object Paginator {
         val sideEffects: Observable<SideEffect> =
             sideEffectRelay
                 .hide()
+                .observeOn(uiThread.scheduler)
 
         fun proceed(action: Action) {
             Timber.d("Action: $action")
