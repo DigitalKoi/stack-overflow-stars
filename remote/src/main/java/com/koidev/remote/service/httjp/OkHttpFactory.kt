@@ -22,7 +22,6 @@ class OkHttpFactory {
 
         interceptors.forEach { interceptor -> builder.addInterceptor(interceptor) }
 
-
         return builder.build()
     }
 }

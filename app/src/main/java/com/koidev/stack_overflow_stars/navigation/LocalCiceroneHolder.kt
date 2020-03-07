@@ -1,4 +1,4 @@
-package com.koidev.stackoverflowstars.navigation
+package com.koidev.stack_overflow_stars.navigation
 
 import ru.terrakok.cicerone.Cicerone
 import ru.terrakok.cicerone.Router

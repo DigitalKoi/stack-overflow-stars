@@ -57,6 +57,7 @@ object Libs {
         const val palette = "androidx.palette:palette:1.0.0"
         const val recyclerview = "androidx.recyclerview:recyclerview:1.1.0"
         const val swiperefresh = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha03"
+        const val cardview = "androidx.cardview:cardview:1.0.0"
 
         object Navigation {
             private const val version = "2.2.1"
