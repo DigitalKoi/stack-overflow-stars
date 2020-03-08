@@ -1,5 +1,5 @@
-import com.koidev.stack_overflow_stars.Build
-import com.koidev.stack_overflow_stars.Libs
+import com.koidev.stackoverflowstars.Build
+import com.koidev.stackoverflowstars.Libs
 
 plugins {
     id("com.android.application")

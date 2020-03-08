@@ -7,8 +7,8 @@ buildscript {
 
     }
     dependencies {
-        classpath(com.koidev.stack_overflow_stars.Libs.androidGradlePlugin)
-        classpath(com.koidev.stack_overflow_stars.Libs.Kotlin.gradlePlugin)
+        classpath(com.koidev.stackoverflowstars.Libs.androidGradlePlugin)
+        classpath(com.koidev.stackoverflowstars.Libs.Kotlin.gradlePlugin)
     }
 }
 
