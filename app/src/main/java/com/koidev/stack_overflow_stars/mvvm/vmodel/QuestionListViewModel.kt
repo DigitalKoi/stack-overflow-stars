@@ -1,7 +1,7 @@
 package com.koidev.stack_overflow_stars.mvvm.vmodel
 
 import androidx.lifecycle.ViewModel
-import com.jakewharton.rxrelay2.ReplayRelay
+import com.jakewharton.rxrelay2.BehaviorRelay
 import com.koidev.domain.Question
 import com.koidev.domain.common.disposedBy
 import com.koidev.domain.interactor.GetQuestionsList
@@ -21,13 +21,10 @@ class QuestionListViewModel(
 
     private val subscriptions by lazy { CompositeDisposable() }
 
-    private val questionList = ReplayRelay.create<List<Question>>()
+    private val renderState = BehaviorRelay.create<Paginator.State>()
 
     init {
-
-        router.navigateTo(Screens.QuestionsListScreen())
-
-//        paginator.render {  }
+        paginator.render = { renderState.accept(it) }
         paginator.sideEffects.subscribe { effect ->
             when (effect) {
                 is Paginator.SideEffect.LoadPage -> loadNewPage(effect.currentPage)
@@ -40,30 +37,38 @@ class QuestionListViewModel(
         refreshProject()
     }
 
-    fun observeQuestionsList(): Observable<List<Question>> = questionList
+    fun observeRenderState(): Observable<Paginator.State> = renderState
 
     fun onItemClick(item: Question) {
 
+    }
+
+    fun routeToQuestionsList() {
+        router.navigateTo(Screens.QuestionsListScreen())
     }
 
     fun loadNextEventsPage() = paginator.proceed(Paginator.Action.LoadMore)
 
     fun refreshEvents() = paginator.proceed(Paginator.Action.Refresh)
 
-    private inner class ObserveGetQuestionsList : DisposableObserver<List<Question>>() {
+    private inner class ObserveGetQuestionsList(val page: Int) : DisposableObserver<List<Question>>() {
 
         override fun onComplete() {
             Timber.d("Observe questions stream completed")
         }
 
         override fun onNext(list: List<Question>) {
-            questionList.accept(list)
-            Timber.d("Questions list: ${list[0]}")
+            paginator.proceed(Paginator.Action.NewPage(page, list))
         }
 
         override fun onError(e: Throwable) {
+            paginator.proceed(Paginator.Action.PageError(e))
             Timber.d("Observing questions list error: ${e.localizedMessage}")
         }
+    }
+
+    fun onBackPressed() {
+        router.exit()
     }
 
     override fun onCleared() {
@@ -74,7 +79,7 @@ class QuestionListViewModel(
 
     private fun loadNewPage(page: Int) {
         getQuestionsList.execute(
-            observer = ObserveGetQuestionsList(),
+            observer = ObserveGetQuestionsList(page),
             params = page
         )
     }

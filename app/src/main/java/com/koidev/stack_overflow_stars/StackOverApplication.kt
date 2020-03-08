@@ -17,8 +17,6 @@ class StackOverApplication : Application() {
         initTimber()
     }
 
-
-
     fun getComponentManager(): ComponentManager = componentManager
 
     private fun initTimber() {
