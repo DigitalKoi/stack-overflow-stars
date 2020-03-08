@@ -41,6 +41,6 @@ class PaginalAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int, payloads: MutableList<Any?>) {
         super.onBindViewHolder(holder, position, payloads)
-        if (!fullData && position >= items.size - 10) nextPageCallback.invoke()
+        if (!fullData && position >= items.size - 5) nextPageCallback.invoke()
     }
 }

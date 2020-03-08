@@ -130,6 +130,12 @@ object Libs {
         const val gsonConverter = "com.squareup.retrofit2:converter-gson:$version"
     }
 
+    object Glide {
+        private const val version = "4.11.0"
+        const val glide = "com.github.bumptech.glide:glide:$version"
+        const val compiler = "com.github.bumptech.glide:compiler:$version"
+    }
+
     object OkHttp {
         private const val version = "4.4.0"
         const val okhttp = "com.squareup.okhttp3:okhttp:$version"

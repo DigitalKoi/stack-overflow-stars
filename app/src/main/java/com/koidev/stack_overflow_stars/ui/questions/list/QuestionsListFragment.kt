@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.koidev.domain.Question
+import com.koidev.domain.common.disposedBy
 import com.koidev.stack_overflow_stars.R
 import com.koidev.stack_overflow_stars.mvvm.vmodel.QuestionListViewModel
 import com.koidev.stack_overflow_stars.mvvm.vmodel.QuestionListViewModelFactory
@@ -52,7 +53,6 @@ class QuestionsListFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //TODO: add view listeners here
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -62,6 +62,10 @@ class QuestionsListFragment : BaseFragment() {
             { viewModel.refreshEvents() },
             adapter
         )
+        viewModel.observeRenderState()
+            .subscribe(paginalRenderView::render)
+            .disposedBy(subscriptions)
+
     }
 
     override fun onDestroy() {
@@ -79,6 +83,6 @@ class QuestionsListFragment : BaseFragment() {
     }
 
     override fun onBackPressed() {
-        //TODO: add backPress logic here
+        viewModel.onBackPressed()
     }
 }

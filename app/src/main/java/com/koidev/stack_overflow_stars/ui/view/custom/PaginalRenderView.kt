@@ -44,6 +44,7 @@ class PaginalRenderView @JvmOverloads constructor(
         this.adapter = adapter
         recyclerView.adapter = adapter
     }
+
     fun render(state: Paginator.State) {
         post {
             when (state) {

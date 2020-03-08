@@ -23,24 +23,28 @@
 
         <TextView
             android:id="@+id/userName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp_4"
+            android:layout_marginEnd="@dimen/dp_8"
             android:textColor="@color/woodsmoke"
             android:textSize="@dimen/sp_14"
             app:layout_constraintBottom_toBottomOf="@id/userImage"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/userImage"
             tools:text="@tools:sample/full_names" />
 
         <TextView
             android:id="@+id/question"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginEnd="@dimen/dp_8"
             android:maxLines="2"
             android:textColor="@color/sanMarino"
             android:textSize="@dimen/sp_16"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/userName"
             app:layout_constraintTop_toBottomOf="@id/userName"
             tools:text="@tools:sample/lorem/random" />

@@ -4,6 +4,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.koidev.domain.Question
 import com.koidev.stack_overflow_stars.R
@@ -11,10 +13,7 @@ import com.koidev.stack_overflow_stars.utils.inflate
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_question.view.*
 
-fun Question.isSame(other: Question) =
-    questionId == other.questionId
-            && questionId == other.questionId
-            && creationDate == other.creationDate
+fun Question.isSame(other: Question) = questionId == other.questionId
 
 class QuestionsAdapterDelegate(
     private val clickListener: (Question) -> Unit
@@ -26,15 +25,6 @@ class QuestionsAdapterDelegate(
 
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         val root = parent.inflate(R.layout.item_question)
-        with(root) {
-            statusIcon.setImageDrawable(
-                ResourcesCompat.getDrawable(
-                    resources,
-                    R.drawable.ic_question_grey,
-                    null
-                )
-            )
-        }
 
         return ViewHolder(root)
     }
@@ -59,7 +49,23 @@ class QuestionsAdapterDelegate(
 
         fun bind(item: Question) {
             this.item = item
-            // TODO: add binding views
+            containerView.apply {
+                userName.text = item.owner.displayName
+                question.text = item.title
+                answerCount.text = item.answerCount.toString()
+                Glide.with(userImage)
+                    .load(item.owner.profileImage)
+                    .apply(RequestOptions.circleCropTransform())
+                    .into(userImage)
+
+                statusIcon.setImageDrawable(
+                    ResourcesCompat.getDrawable(
+                        resources,
+                        if (item.isAnswered) R.drawable.ic_question_green else R.drawable.ic_question_grey,
+                        null
+                    )
+                )
+            }
         }
     }
 }

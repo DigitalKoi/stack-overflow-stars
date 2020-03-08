@@ -86,6 +86,9 @@ dependencies {
     kapt(Libs.Dagger.compiler)
     kapt(Libs.Dagger.androidProcessor)
 
+    implementation(Libs.Glide.glide)
+    annotationProcessor(Libs.Glide.compiler)
+
     implementation(Libs.adapterDelegates)
 
     implementation(Libs.threetenabp)
