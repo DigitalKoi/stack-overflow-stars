@@ -75,15 +75,20 @@ dependencies {
     implementation(Libs.AndroidX.Navigation.fragment)
     implementation(Libs.AndroidX.Navigation.ui)
     implementation(Libs.Google.material)
+    implementation(Libs.AndroidX.cardview)
+    implementation(Libs.AndroidX.swiperefresh)
 
     implementation(Libs.RxJava.rxKotlin)
     implementation(Libs.RxJava.rxAndroid)
     implementation(Libs.RxJava.rxRelay)
 
     implementation(Libs.Dagger.androidSupport)
-    implementation(Libs.AndroidX.cardview)
     kapt(Libs.Dagger.compiler)
     kapt(Libs.Dagger.androidProcessor)
+
+    implementation(Libs.adapterDelegates)
+
+    implementation(Libs.threetenabp)
 
     implementation(Libs.cicerone)
 
