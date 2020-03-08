@@ -1,4 +1,4 @@
-import com.koidev.stack_overflow_stars.Libs
+import com.koidev.stackoverflowstars.Libs
 
 apply plugin: 'java-library'
 apply plugin: 'kotlin'

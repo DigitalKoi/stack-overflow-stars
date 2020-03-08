@@ -25,7 +25,7 @@
         android:layout_gravity="center"
         android:visibility="gone" />
 
-    <com.koidev.stack_overflow_stars.ui.view.custom.EmptyView
+    <com.koidev.stackoverflowstars.ui.view.custom.EmptyView
         android:id="@+id/emptyView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

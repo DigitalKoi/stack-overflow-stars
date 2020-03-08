@@ -1,4 +1,4 @@
-import com.koidev.stack_overflow_stars.*
+import com.koidev.stackoverflowstars.*
 
 apply plugin: "kotlin"
 
