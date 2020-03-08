@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/questionsList"
+    <com.koidev.stack_overflow_stars.ui.view.custom.PaginalRenderView
+        android:id="@+id/paginalRenderView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/item_question" />

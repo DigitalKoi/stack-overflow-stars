@@ -42,6 +42,14 @@ class QuestionListViewModel(
 
     fun observeQuestionsList(): Observable<List<Question>> = questionList
 
+    fun onItemClick(item: Question) {
+
+    }
+
+    fun loadNextEventsPage() = paginator.proceed(Paginator.Action.LoadMore)
+
+    fun refreshEvents() = paginator.proceed(Paginator.Action.Refresh)
+
     private inner class ObserveGetQuestionsList : DisposableObserver<List<Question>>() {
 
         override fun onComplete() {

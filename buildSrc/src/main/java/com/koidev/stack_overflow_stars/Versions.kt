@@ -26,7 +26,11 @@ object Libs {
     const val javaAnnotation = "javax.annotation:jsr250-api:1.0"
     const val javaInject ="javax.inject:javax.inject:1"
 
+    const val adapterDelegates = "com.hannesdorfmann:adapterdelegates4-kotlin-dsl-layoutcontainer:4.2.0"
+
     const val cicerone = "ru.terrakok.cicerone:cicerone:5.1.0"
+
+    const val threetenabp = "com.jakewharton.threetenabp:threetenabp:1.2.2"
 
     const val leakCanary = "com.squareup.leakcanary:leakcanary-android:2.2"
 
@@ -56,7 +60,7 @@ object Libs {
         const val collection = "androidx.collection:collection-ktx:1.1.0"
         const val palette = "androidx.palette:palette:1.0.0"
         const val recyclerview = "androidx.recyclerview:recyclerview:1.1.0"
-        const val swiperefresh = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha03"
+        const val swiperefresh = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-beta01"
         const val cardview = "androidx.cardview:cardview:1.0.0"
 
         object Navigation {

@@ -30,7 +30,7 @@
             android:textSize="@dimen/sp_14"
             app:layout_constraintBottom_toBottomOf="@id/userImage"
             app:layout_constraintStart_toEndOf="@id/userImage"
-            tools:text="Developer Name" />
+            tools:text="@tools:sample/full_names" />
 
         <TextView
             android:id="@+id/question"
@@ -43,15 +43,15 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/userName"
             app:layout_constraintTop_toBottomOf="@id/userName"
-            tools:text="Why is processing a sorted array faster than processing an unsorted array?" />
+            tools:text="@tools:sample/lorem/random" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/tags"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="@id/question"
             app:layout_constraintEnd_toStartOf="@id/statusIcon"
+            app:layout_constraintStart_toStartOf="@id/question"
             app:layout_constraintTop_toBottomOf="@id/question"
             tools:listitem="@tools:sample/us_zipcodes" />
 
@@ -60,19 +60,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/dp_8"
+            app:layout_constraintBottom_toBottomOf="@id/statusIcon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/question"
-            app:layout_constraintBottom_toBottomOf="@id/statusIcon"
             tools:text="21" />
 
         <ImageView
             android:id="@+id/statusIcon"
             android:layout_width="@dimen/dp_16"
             android:layout_height="@dimen/dp_16"
-            app:layout_constraintEnd_toStartOf="@id/answerCount"
-            app:layout_constraintTop_toTopOf="@id/answerCount"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="@dimen/dp_8"
+            app:layout_constraintEnd_toStartOf="@id/answerCount"
+            app:layout_constraintTop_toTopOf="@id/answerCount"
             tools:src="@drawable/ic_question_green" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
