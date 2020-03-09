@@ -7,7 +7,7 @@ import com.koidev.domain.Question
 
 fun QuestionEntity.toDomain() = Question(
     tags = tags,
-    owner = owner.toDomain(),
+    owner = owner?.toDomain(),
     isAnswered = isAnswered,
     viewCount = viewCount,
     answerCount = answerCount,

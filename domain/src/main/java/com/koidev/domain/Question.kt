@@ -2,7 +2,7 @@ package com.koidev.domain
 
 data class Question(
     val tags: List<String>,
-    val owner: Owner,
+    val owner: Owner?,
     val isAnswered: Boolean,
     val viewCount: Long,
     val answerCount: Long,
