@@ -7,7 +7,7 @@ import com.koidev.persistence.mapper.toCache
 import com.koidev.persistence.mapper.toQuestionEntity
 import com.koidev.persistence.model.CachedQuestions
 import io.reactivex.Completable
-import io.reactivex.Maybe
+import io.reactivex.Single
 
 class DefaultStackOverFlowCache(
     private val db: StackOverFlowDatabase
@@ -21,7 +21,7 @@ class DefaultStackOverFlowCache(
             Completable.complete()
         }
 
-    override fun getQuestions(query: String): Maybe<List<QuestionEntity>> = db
+    override fun getQuestions(query: String): Single<List<QuestionEntity>> = db
         .questionsDao()
         .getQuestions(
             //TODO: add search query here

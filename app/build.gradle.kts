@@ -96,6 +96,7 @@ dependencies {
     implementation(Libs.cicerone)
 
     implementation(Libs.timber)
+    implementation(Libs.stetho)
 
     debugImplementation(Libs.leakCanary)
 

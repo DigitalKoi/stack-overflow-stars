@@ -6,7 +6,9 @@ import androidx.room.TypeConverters
 import com.koidev.persistence.constant.QuestionConstants
 import com.koidev.persistence.utils.Converters
 
-@Entity(tableName = QuestionConstants.QUESTIONS_TABLE_NAME)
+@Entity(
+    tableName = QuestionConstants.QUESTIONS_TABLE_NAME
+)
 data class CachedQuestions(
     @PrimaryKey val questionId: Long,
     @TypeConverters(Converters::class)

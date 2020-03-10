@@ -36,6 +36,8 @@ object Libs {
 
     const val httpMocker = "fr.speekha.httpmocker:gson-adapter:1.1.8"
 
+    const val stetho = "com.facebook.stetho:stetho-okhttp3:1.5.1"
+
     object Google {
         const val material = "com.google.android.material:material:1.1.0"
     }

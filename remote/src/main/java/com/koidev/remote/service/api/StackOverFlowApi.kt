@@ -1,7 +1,7 @@
 package com.koidev.remote.service.api
 
 import com.koidev.remote.model.QuestionResponse
-import io.reactivex.Single
+import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -15,6 +15,6 @@ interface StackOverFlowApi {
         @Query("order") order: String = "desc",
         @Query("sort") sort: String = "activity",
         @Query("site") site: String = "stackoverflow"
-    ): Single<QuestionResponse>
+    ): Observable<QuestionResponse>
 
 }

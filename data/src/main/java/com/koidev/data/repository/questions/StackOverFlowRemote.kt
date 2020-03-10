@@ -1,9 +1,9 @@
 package com.koidev.data.repository.questions
 
 import com.koidev.data.model.QuestionEntity
-import io.reactivex.Single
+import io.reactivex.Observable
 
 interface StackOverFlowRemote {
 
-    fun getQuestions(page: Int): Single<List<QuestionEntity>>
+    fun getQuestions(page: Int): Observable<List<QuestionEntity>>
 }

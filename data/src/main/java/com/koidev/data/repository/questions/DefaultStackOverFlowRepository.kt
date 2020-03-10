@@ -6,19 +6,19 @@ import com.koidev.data.model.QuestionEntity
 import com.koidev.domain.Question
 import com.koidev.domain.repository.StackOverFlowRepository
 import io.reactivex.Completable
-import io.reactivex.Maybe
+import io.reactivex.Observable
 import io.reactivex.Single
 
 class DefaultStackOverFlowRepository(
     private val factory: StackOverFlowFactory
 ): StackOverFlowRepository {
 
-    override fun getQuestionsByPage(page: Int): Single<List<Question>> = factory
+    override fun getQuestionsByPage(page: Int): Observable<List<Question>> = factory
         .getStackOverFlowRemote()
         .getQuestions(page)
         .map { it.map(QuestionEntity::toDomain) }
 
-    override fun getQuestionsByQuery(query: String): Maybe<List<Question>> = factory
+    override fun getQuestionsByQuery(query: String): Single<List<Question>> = factory
         .getStackOverFlowCache()
         .getQuestions(query)
         .map { it.map(QuestionEntity::toDomain) }

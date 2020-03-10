@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Query
 import com.koidev.persistence.constant.QuestionConstants
 import com.koidev.persistence.model.CachedQuestions
-import io.reactivex.Maybe
+import io.reactivex.Single
 
 @Dao
 abstract class QuestionsDao : BaseDao<CachedQuestions> {
@@ -13,5 +13,5 @@ abstract class QuestionsDao : BaseDao<CachedQuestions> {
     abstract fun clear()
 
     @Query(QuestionConstants.QUERY_QUESTIONS)
-    abstract fun getQuestions(): Maybe<List<CachedQuestions>>
+    abstract fun getQuestions(): Single<List<CachedQuestions>>
 }

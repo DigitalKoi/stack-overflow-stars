@@ -1,6 +1,7 @@
 package com.koidev.stackoverflowstars
 
 import android.app.Application
+import com.facebook.stetho.Stetho
 import com.koidev.stackoverflowstars.di.common.ComponentManager
 import com.koidev.stackoverflowstars.di.common.DefaultComponentManager
 import timber.log.Timber
@@ -17,6 +18,7 @@ class StackOverApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         initTimber()
+        initStatho()
     }
 
     fun getComponentManager(): ComponentManager = componentManager
@@ -25,5 +27,9 @@ class StackOverApplication : Application() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         } // else for crashlytics
+    }
+
+    private fun initStatho() {
+        Stetho.initializeWithDefaults(this)
     }
 }

@@ -1,6 +1,7 @@
 package com.koidev.stackoverflowstars.di.module
 
 import android.content.Context
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.koidev.remote.service.RemoteServiceFactory
 import com.koidev.remote.service.api.StackOverFlowApi
 import com.koidev.remote.service.httjp.OkHttpFactory
@@ -27,13 +28,15 @@ class NetworkModule(
     fun provideHttpClient(
         apiRequestInterceptor: ApiRequestInterceptor,
         apiResponseInterceptor: ApiResponseInterceptor,
-        mockResponseInterceptor: MockResponseInterceptor
+        mockResponseInterceptor: MockResponseInterceptor,
+        stethoInterceptor: StethoInterceptor
     ): OkHttpClient {
 
         val interceptors = listOf(
             apiRequestInterceptor,
             apiResponseInterceptor,
-            mockResponseInterceptor
+            mockResponseInterceptor,
+            stethoInterceptor
         )
 
         return OkHttpFactory().buildOkHttpClient(interceptors)
@@ -48,6 +51,9 @@ class NetworkModule(
     @Singleton @Provides
     fun provideRemoteServiceFactory(okHttpClient: OkHttpClient): RemoteServiceFactory =
         RemoteServiceFactory(okHttpClient)
+
+    @Singleton @Provides
+    fun provideStetho() = StethoInterceptor()
 
     @Singleton @Provides
     fun provideMockResponseInterceptor(context: Context) = MockResponseInterceptor
