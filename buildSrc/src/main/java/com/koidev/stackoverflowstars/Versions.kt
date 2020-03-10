@@ -34,6 +34,8 @@ object Libs {
 
     const val leakCanary = "com.squareup.leakcanary:leakcanary-android:2.2"
 
+    const val httpMocker = "fr.speekha.httpmocker:gson-adapter:1.1.8"
+
     object Google {
         const val material = "com.google.android.material:material:1.1.0"
     }
@@ -47,10 +49,10 @@ object Libs {
     }
 
     object RxJava {
-        private const val version = "2.4.0"
-        const val rxJava = "io.reactivex.rxjava2:rxjava:$version"
+        private const val version = "2.2.0"
+        const val rxJava = "io.reactivex.rxjava2:rxjava:2.2.18"
         const val rxAndroid = "io.reactivex.rxjava2:rxandroid:2.1.1"
-        const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:$version"
+        const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:2.4.0"
         const val rxRelay = "com.jakewharton.rxrelay2:rxrelay:2.1.1"
     }
 

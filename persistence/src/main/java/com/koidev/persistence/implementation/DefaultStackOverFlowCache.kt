@@ -7,11 +7,11 @@ import com.koidev.persistence.mapper.toCache
 import com.koidev.persistence.mapper.toQuestionEntity
 import com.koidev.persistence.model.CachedQuestions
 import io.reactivex.Completable
-import io.reactivex.Observable
+import io.reactivex.Maybe
 
 class DefaultStackOverFlowCache(
     private val db: StackOverFlowDatabase
-) : StackOverFlowCache{
+) : StackOverFlowCache {
 
     override fun saveQuestions(result: List<QuestionEntity>): Completable =
         Completable.defer {
@@ -21,7 +21,7 @@ class DefaultStackOverFlowCache(
             Completable.complete()
         }
 
-    override fun getQuestions(query: String): Observable<List<QuestionEntity>> = db
+    override fun getQuestions(query: String): Maybe<List<QuestionEntity>> = db
         .questionsDao()
         .getQuestions(
             //TODO: add search query here

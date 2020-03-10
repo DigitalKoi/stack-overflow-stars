@@ -12,6 +12,8 @@ dependencies {
     api Libs.Retrofit.retrofit
     api Libs.Retrofit.gsonConverter
     api Libs.Retrofit.retrofit_rxjava_adapter
+
+    api Libs.httpMocker
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8

@@ -6,7 +6,7 @@ import com.koidev.data.model.QuestionEntity
 import com.koidev.domain.Question
 import com.koidev.domain.repository.StackOverFlowRepository
 import io.reactivex.Completable
-import io.reactivex.Observable
+import io.reactivex.Maybe
 import io.reactivex.Single
 
 class DefaultStackOverFlowRepository(
@@ -18,12 +18,12 @@ class DefaultStackOverFlowRepository(
         .getQuestions(page)
         .map { it.map(QuestionEntity::toDomain) }
 
-    override fun getQuestionsByQuery(query: String): Observable<List<Question>> = factory
+    override fun getQuestionsByQuery(query: String): Maybe<List<Question>> = factory
         .getStackOverFlowCache()
         .getQuestions(query)
         .map { it.map(QuestionEntity::toDomain) }
 
-    override fun saveQuestions(questions: List<Question>): Completable = factory
+    override fun saveQuestions(questions: ArrayList<Question>): Completable = factory
         .getStackOverFlowCache()
         .saveQuestions(questions.map(Question::toEntity))
 

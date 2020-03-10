@@ -8,14 +8,14 @@ object Converters {
 
     @TypeConverter
     @JvmStatic
-    fun fromStringList(list: ArrayList<String>): String {
+    fun fromStringList(list: List<String>): String {
         return Gson().toJson(list)
     }
 
     @TypeConverter
     @JvmStatic
-    fun toStringList(value: String): ArrayList<String> {
-        val listType = object : TypeToken<ArrayList<String>>() {}.type
+    fun toStringList(value: String): List<String> {
+        val listType = object : TypeToken<List<String>>() {}.type
         return Gson().fromJson(value, listType)
     }
 }
