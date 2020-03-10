@@ -5,6 +5,7 @@ plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("android.extensions")
+    kotlin("kapt")
 }
 
 android {
@@ -20,10 +21,10 @@ dependencies {
 
     implementation(Libs.RxJava.rxKotlin)
     implementation(Libs.RxJava.rxRelay)
-    implementation(Libs.AndroidX.Room.runtime)
+    api(Libs.AndroidX.Room.runtime)
     implementation(Libs.AndroidX.Room.rxjava2)
     implementation(Libs.AndroidX.Room.gson)
-    annotationProcessor(Libs.AndroidX.Room.compiler)
+    kapt(Libs.AndroidX.Room.compiler)
 
     implementation(Libs.timber)
 

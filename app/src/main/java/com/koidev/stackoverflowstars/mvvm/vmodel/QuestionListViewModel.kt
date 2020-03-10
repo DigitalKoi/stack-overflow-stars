@@ -9,7 +9,7 @@ import com.koidev.stackoverflowstars.navigation.Screens
 import com.koidev.stackoverflowstars.utils.Paginator
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.observers.DisposableObserver
+import io.reactivex.observers.DisposableSingleObserver
 import ru.terrakok.cicerone.Router
 import timber.log.Timber
 
@@ -51,13 +51,9 @@ class QuestionListViewModel(
 
     fun refreshEvents() = paginator.proceed(Paginator.Action.Refresh)
 
-    private inner class ObserveGetQuestionsList(val page: Int) : DisposableObserver<List<Question>>() {
+    private inner class ObserveGetQuestionsList(val page: Int) : DisposableSingleObserver<List<Question>>() {
 
-        override fun onComplete() {
-            Timber.d("Observe questions stream completed")
-        }
-
-        override fun onNext(list: List<Question>) {
+        override fun onSuccess(list: List<Question>) {
             paginator.proceed(Paginator.Action.NewPage(page, list))
         }
 

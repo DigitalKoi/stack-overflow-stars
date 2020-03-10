@@ -1,16 +1,19 @@
 package com.koidev.persistence.implementation
 
 import com.koidev.data.model.QuestionEntity
+import com.koidev.data.repository.questions.StackOverFlowCache
 import com.koidev.persistence.StackOverFlowDatabase
 import com.koidev.persistence.mapper.toCache
 import com.koidev.persistence.mapper.toQuestionEntity
 import com.koidev.persistence.model.CachedQuestions
 import io.reactivex.Completable
-import io.reactivex.Single
+import io.reactivex.Observable
 
-class DefaultQuestionsCache(private val db: StackOverFlowDatabase) {
+class DefaultStackOverFlowCache(
+    private val db: StackOverFlowDatabase
+) : StackOverFlowCache{
 
-    fun saveQuestions(result: List<QuestionEntity>): Completable =
+    override fun saveQuestions(result: List<QuestionEntity>): Completable =
         Completable.defer {
             result.forEach { question ->
                 db.questionsDao().insert(question.toCache())
@@ -18,12 +21,14 @@ class DefaultQuestionsCache(private val db: StackOverFlowDatabase) {
             Completable.complete()
         }
 
-    fun getQuestions(): Single<List<QuestionEntity>> = db
+    override fun getQuestions(query: String): Observable<List<QuestionEntity>> = db
         .questionsDao()
-        .getQuestions()
+        .getQuestions(
+            //TODO: add search query here
+        )
         .map { it.map(CachedQuestions::toQuestionEntity) }
 
-    fun clear(): Completable = Completable
+    override fun clear(): Completable = Completable
         .defer {
             db.questionsDao().clear()
             Completable.complete()
