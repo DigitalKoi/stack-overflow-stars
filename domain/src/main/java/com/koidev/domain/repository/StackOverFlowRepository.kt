@@ -9,7 +9,7 @@ interface StackOverFlowRepository {
 
     fun getQuestionsByPage(page: Int): Observable<List<Question>>
 
-    fun getQuestionsByQuery(query: String): Single<List<Question>>
+    fun getQuestionsByQuery(): Single<List<Question>>
 
     fun saveQuestions(questions: ArrayList<Question>): Completable
 

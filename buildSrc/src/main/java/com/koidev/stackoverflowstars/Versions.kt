@@ -56,6 +56,10 @@ object Libs {
         const val rxAndroid = "io.reactivex.rxjava2:rxandroid:2.1.1"
         const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:2.4.0"
         const val rxRelay = "com.jakewharton.rxrelay2:rxrelay:2.1.1"
+        const val rxBinding = "com.jakewharton.rxbinding3:rxbinding:3.1.0"
+        const val rxBindingCore = "com.jakewharton.rxbinding3:rxbinding-core:3.1.0"
+        const val rxBindingAppCompat = "com.jakewharton.rxbinding3:rxbinding-appcompat:3.1.0"
+        const val rxBindingMaterial = "com.jakewharton.rxbinding3:rxbinding-appcompat:3.1.0"
     }
 
     object AndroidX {

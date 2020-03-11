@@ -9,11 +9,17 @@ import io.reactivex.Single
 class ObserveQuestionsListFromDataBase(
     postExecutionThread: PostExecutionThread,
     private val stackOverFlowRepository: StackOverFlowRepository
-): SingleUseCase<List<Question>, String?>(postExecutionThread) {
+) : SingleUseCase<List<Question>, String?>(postExecutionThread) {
 
     override fun buildUseCaseObservable(params: String?): Single<List<Question>> =
         stackOverFlowRepository
-            .getQuestionsByQuery(params ?: "")
+            .getQuestionsByQuery()
+            .map { questions ->
+//                if (params.isNullOrEmpty()) return questions
+                questions.filter { item ->
+                    item.title.contains(params as String)
+                }
+            }
 
 
 }

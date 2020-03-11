@@ -22,11 +22,9 @@ class DefaultStackOverFlowCache(
             Completable.complete()
         }
 
-    override fun getQuestions(query: String): Single<List<QuestionEntity>> = db
+    override fun getQuestions(): Single<List<QuestionEntity>> = db
         .questionsDao()
-        .getQuestions(
-            //TODO: add search query here
-        )
+        .getQuestions()
         .map { it.map(CachedQuestions::toQuestionEntity) }
 
     override fun clear(): Completable = Completable

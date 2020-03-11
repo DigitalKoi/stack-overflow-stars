@@ -18,9 +18,9 @@ class DefaultStackOverFlowRepository(
         .getQuestions(page)
         .map { it.map(QuestionEntity::toDomain) }
 
-    override fun getQuestionsByQuery(query: String): Single<List<Question>> = factory
+    override fun getQuestionsByQuery(): Single<List<Question>> = factory
         .getStackOverFlowCache()
-        .getQuestions(query)
+        .getQuestions()
         .map { it.map(QuestionEntity::toDomain) }
 
     override fun saveQuestions(questions: ArrayList<Question>): Completable = factory

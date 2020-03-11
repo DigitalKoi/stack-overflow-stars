@@ -8,7 +8,7 @@ interface StackOverFlowCache {
 
     fun saveQuestions(list: List<QuestionEntity>): Completable
 
-    fun getQuestions(query: String): Single<List<QuestionEntity>>
+    fun getQuestions(): Single<List<QuestionEntity>>
 
     fun clear(): Completable
 }
