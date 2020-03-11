@@ -1,4 +1,4 @@
-package com.koidev.stack_overflow_stars.mvvm.vmodel
+package com.koidev.stackoverflowstars.mvvm.vmodel
 
 import androidx.lifecycle.ViewModel
 import com.jakewharton.rxrelay2.BehaviorRelay
@@ -6,8 +6,6 @@ import com.koidev.domain.Question
 import com.koidev.domain.common.disposedBy
 import com.koidev.domain.interactor.ClearDataBase
 import com.koidev.domain.interactor.GetQuestionsList
-import com.koidev.stackoverflowstars.navigation.Screens
-import com.koidev.stackoverflowstars.utils.Paginator
 import com.koidev.domain.interactor.ObserveQuestionsListFromDataBase
 import com.koidev.stackoverflowstars.navigation.Screens
 import com.koidev.stackoverflowstars.utils.Paginator

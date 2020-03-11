@@ -1,4 +1,0 @@
-import com.koidev.stackoverflowstars.Libs
-
-apply plugin: 'java-library'
-apply plugin: 'kotlin'

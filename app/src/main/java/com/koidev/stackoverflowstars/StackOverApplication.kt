@@ -1,8 +1,6 @@
 package com.koidev.stackoverflowstars
 
 import android.app.Application
-import com.koidev.stackoverflowstars.di.common.ComponentManager
-import com.koidev.stackoverflowstars.di.common.DefaultComponentManager
 import com.facebook.stetho.Stetho
 import com.koidev.stackoverflowstars.di.common.ComponentManager
 import com.koidev.stackoverflowstars.di.common.DefaultComponentManager

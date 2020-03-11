@@ -7,7 +7,6 @@ import com.koidev.domain.interactor.ClearDataBase
 import com.koidev.domain.interactor.GetQuestionsList
 import com.koidev.domain.interactor.ObserveQuestionsListFromDataBase
 import com.koidev.stackoverflowstars.utils.Paginator
-import com.koidev.stackoverflowstars.utils.Paginator
 import ru.terrakok.cicerone.Router
 
 class QuestionListViewModelFactory(

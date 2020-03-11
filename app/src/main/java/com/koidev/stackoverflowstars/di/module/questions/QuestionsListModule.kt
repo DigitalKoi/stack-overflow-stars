@@ -1,7 +1,9 @@
 package com.koidev.stackoverflowstars.di.module.questions
 
 import com.koidev.domain.Question
+import com.koidev.domain.interactor.ClearDataBase
 import com.koidev.domain.interactor.GetQuestionsList
+import com.koidev.domain.interactor.ObserveQuestionsListFromDataBase
 import com.koidev.domain.repository.StackOverFlowRepository
 import com.koidev.stackoverflowstars.di.scope.QuestionsScope
 import com.koidev.stackoverflowstars.global.UiThread
@@ -18,10 +20,14 @@ class QuestionsListModule {
     fun provideQuestionListViewModelFactory(
         router: Router,
         getQuestionsList: GetQuestionsList,
+        observeQuestionsListFromDataBase: ObserveQuestionsListFromDataBase,
+        clearDataBase: ClearDataBase,
         paginator: Paginator.Store<Question>
     ) = QuestionListViewModelFactory(
         router = router,
         getQuestionsList = getQuestionsList,
+        observeQuestionsListFromDataBase = observeQuestionsListFromDataBase,
+        clearDataBase = clearDataBase,
         paginator = paginator
     )
 
@@ -29,6 +35,22 @@ class QuestionsListModule {
     fun provideGetQuestionsList(
         stackOverFlowRepository: StackOverFlowRepository
     ) = GetQuestionsList(
+        postExecutionThread = UiThread(),
+        stackOverFlowRepository = stackOverFlowRepository
+    )
+
+    @Provides @QuestionsScope
+    fun provideObserveQuestionListFromDb(
+        stackOverFlowRepository: StackOverFlowRepository
+    ) = ObserveQuestionsListFromDataBase(
+        postExecutionThread = UiThread(),
+        stackOverFlowRepository = stackOverFlowRepository
+    )
+
+    @Provides @QuestionsScope
+    fun provideClearDataBase(
+        stackOverFlowRepository: StackOverFlowRepository
+    ) = ClearDataBase(
         postExecutionThread = UiThread(),
         stackOverFlowRepository = stackOverFlowRepository
     )
