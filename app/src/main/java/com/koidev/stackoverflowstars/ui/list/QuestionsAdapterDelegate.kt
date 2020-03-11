@@ -50,11 +50,11 @@ class QuestionsAdapterDelegate(
         fun bind(item: Question) {
             this.item = item
             containerView.apply {
-                userName.text = item.owner.displayName
+                userName.text = item.owner?.displayName
                 question.text = item.title
                 answerCount.text = item.answerCount.toString()
                 Glide.with(userImage)
-                    .load(item.owner.profileImage)
+                    .load(item.owner?.profileImage)
                     .apply(RequestOptions.circleCropTransform())
                     .into(userImage)
 

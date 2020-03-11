@@ -1,4 +1,4 @@
-import com.koidev.stackoverflowstars.*
+import com.koidev.stackoverflowstars.Libs
 
 apply plugin: "kotlin"
 
@@ -12,8 +12,8 @@ dependencies {
     api Libs.Retrofit.retrofit
     api Libs.Retrofit.gsonConverter
     api Libs.Retrofit.retrofit_rxjava_adapter
-//    implementation Libs.javaAnnotation
-//    implementation Libs.javaInject
+
+    api Libs.httpMocker
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8

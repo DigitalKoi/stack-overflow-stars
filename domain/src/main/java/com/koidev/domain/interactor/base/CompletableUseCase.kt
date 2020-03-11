@@ -1,13 +1,11 @@
 package com.koidev.domain.interactor.base
 
-import com.koidev.domain.common.disposedBy
 import com.koidev.domain.executor.PostExecutionThread
 import io.reactivex.Completable
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.observers.DisposableCompletableObserver
 import io.reactivex.schedulers.Schedulers
 
-abstract class CompletableUseCase<T, in Params> constructor(
+abstract class CompletableUseCase<in Params> constructor(
     private val postExecutionThread: PostExecutionThread
 ) {
 
@@ -15,16 +13,14 @@ abstract class CompletableUseCase<T, in Params> constructor(
 
     abstract fun buildUseCaseCompletable(params: Params? = null): Completable
 
-    open fun execute(observer: DisposableCompletableObserver, params: Params? = null) {
-        val completable = this.buildUseCaseCompletable(params)
+    open fun execute(params: Params? = null) =
+        this.buildUseCaseCompletable(params)
             .subscribeOn(Schedulers.io())
             .observeOn(postExecutionThread.scheduler)
-
-        completable.subscribeWith(observer).disposedBy(subscriptions)
-    }
 
     open fun dispose() {
         subscriptions.clear()
     }
 
+    open fun subscriber(): CompositeDisposable = subscriptions
 }

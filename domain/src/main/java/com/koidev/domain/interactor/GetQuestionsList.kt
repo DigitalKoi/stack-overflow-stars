@@ -1,22 +1,22 @@
 package com.koidev.domain.interactor
 
-import com.koidev.domain.Question
 import com.koidev.domain.executor.PostExecutionThread
-import com.koidev.domain.interactor.base.ObservableUseCase
+import com.koidev.domain.interactor.base.CompletableUseCase
 import com.koidev.domain.repository.StackOverFlowRepository
-import io.reactivex.Observable
+import io.reactivex.Completable
 
 class GetQuestionsList(
     postExecutionThread: PostExecutionThread,
     private val stackOverFlowRepository: StackOverFlowRepository
-): ObservableUseCase<List<Question>, Int?>(postExecutionThread)  {
+) : CompletableUseCase<Int?>(postExecutionThread) {
 
-    override fun buildUseCaseObservable(params: Int?): Observable<List<Question>> {
 
+    override fun buildUseCaseCompletable(params: Int?): Completable {
         if (params == null) throw IllegalArgumentException("Argument can't be null")
 
         return stackOverFlowRepository
-            .getQuestions(params)
-            // TODO: cache
+            .getQuestionsByPage(params)
+            .flatMapCompletable { stackOverFlowRepository.saveQuestions(ArrayList(it)) }
     }
+
 }

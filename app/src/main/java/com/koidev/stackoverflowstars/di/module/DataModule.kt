@@ -1,11 +1,13 @@
 package com.koidev.stackoverflowstars.di.module
 
+import android.content.Context
 import com.koidev.data.repository.questions.DefaultStackOverFlowRepository
+import com.koidev.data.repository.questions.StackOverFlowCache
+import com.koidev.data.repository.questions.StackOverFlowFactory
 import com.koidev.data.repository.questions.StackOverFlowRemote
-import com.koidev.data.store.stackoverflow.StackOverFlowCacheDataStore
-import com.koidev.data.store.stackoverflow.StackOverFlowFactory
-import com.koidev.data.store.stackoverflow.StackOverFlowRemoteDataStore
 import com.koidev.domain.repository.StackOverFlowRepository
+import com.koidev.persistence.StackOverFlowDatabase
+import com.koidev.persistence.implementation.DefaultStackOverFlowCache
 import com.koidev.remote.implementations.DefaultStackOverFlowRemote
 import com.koidev.remote.service.api.StackOverFlowApi
 import dagger.Module
@@ -21,19 +23,18 @@ class DataModule {
 
     @Singleton @Provides
     fun provideStackOverFlowDataStoreFactory(
-        cache: StackOverFlowCacheDataStore,
-        remote: StackOverFlowRemoteDataStore
+        cache: StackOverFlowCache,
+        remote: StackOverFlowRemote
     ) = StackOverFlowFactory(cache, remote)
-
-    @Singleton @Provides
-    fun provideStackOverFlowCacheStoreFactory() = StackOverFlowCacheDataStore()
-
-    @Singleton @Provides
-    fun provideStackOverFlowRemoteStoreFactory(remote: StackOverFlowRemote) =
-        StackOverFlowRemoteDataStore(remote)
 
     @Singleton @Provides
     fun provideStackOverFlowRemote(api: StackOverFlowApi): StackOverFlowRemote =
         DefaultStackOverFlowRemote(api)
 
+    @Singleton @Provides
+    fun provideStackOverFlowCache(db: StackOverFlowDatabase): StackOverFlowCache =
+        DefaultStackOverFlowCache(db)
+
+    @Singleton @Provides
+    fun provideDataBase(context: Context) = StackOverFlowDatabase.getInstance(context)
 }

@@ -19,7 +19,30 @@ fun QuestionEntity.toDomain() = Question(
     title = title
 )
 
+fun Question.toEntity() = QuestionEntity(
+    tags = tags,
+    owner = owner.toEntity(),
+    isAnswered = isAnswered,
+    viewCount = viewCount,
+    answerCount = answerCount,
+    score = score,
+    lastActivityDate = lastActivityDate,
+    creationDate = creationDate,
+    questionId = questionId,
+    questionLink = questionLink,
+    title = title
+)
+
 private fun OwnerEntity.toDomain() = Owner(
+    reputation = reputation,
+    userType = userType,
+    userId = userId,
+    profileLink = profileLink,
+    profileImage = profileImage,
+    displayName = displayName
+)
+
+private fun Owner.toEntity() = OwnerEntity(
     reputation = reputation,
     userType = userType,
     userId = userId,

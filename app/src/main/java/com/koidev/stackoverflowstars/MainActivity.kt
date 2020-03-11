@@ -22,7 +22,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     lateinit var factory: QuestionListViewModelFactory
 
     private val ciceroneNavigator by lazy {
-        SupportAppNavigator(this, R.id.fragmentContainer)
+        SupportAppNavigator(this,
+            R.id.fragmentContainer
+        )
     }
 
     @Inject

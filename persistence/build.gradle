@@ -2,11 +2,3 @@ import com.koidev.stackoverflowstars.Libs
 
 apply plugin: 'java-library'
 apply plugin: 'kotlin'
-
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation Libs.Kotlin.stdlib
-}
-
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
