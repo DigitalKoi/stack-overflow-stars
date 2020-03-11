@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.koidev.persistence.constant.Config
 import com.koidev.persistence.dao.QuestionsDao
 import com.koidev.persistence.model.CachedQuestions
 import com.koidev.persistence.utils.Converters
@@ -21,7 +22,6 @@ import com.koidev.persistence.utils.Converters
 abstract class StackOverFlowDatabase : RoomDatabase() {
 
     abstract fun questionsDao(): QuestionsDao
-//    abstract fun ownerDao(): OwnerDao()
 
     companion object {
 

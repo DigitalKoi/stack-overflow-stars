@@ -2,7 +2,7 @@ package com.koidev.data.model
 
 data class QuestionEntity(
     val tags: List<String>,
-    val owner: OwnerEntity?,
+    val owner: OwnerEntity,
     val isAnswered: Boolean,
     val viewCount: Long,
     val answerCount: Long,

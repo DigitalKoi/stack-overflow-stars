@@ -15,9 +15,10 @@ class DefaultStackOverFlowCache(
 
     override fun saveQuestions(result: List<QuestionEntity>): Completable =
         Completable.defer {
-            result.forEach { question ->
-                db.questionsDao().insert(question.toCache())
-            }
+
+            val questions = result.map { it.toCache() }
+            db.questionsDao().insert(questions)
+
             Completable.complete()
         }
 

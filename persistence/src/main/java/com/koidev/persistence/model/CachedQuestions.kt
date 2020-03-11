@@ -1,5 +1,6 @@
 package com.koidev.persistence.model
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
@@ -13,7 +14,7 @@ data class CachedQuestions(
     @PrimaryKey val questionId: Long,
     @TypeConverters(Converters::class)
     val tags: List<String>,
-//    val owner: OwnerEntity,
+    @Embedded val owner: CachedOwner,
     val isAnswered: Boolean,
     val viewCount: Long,
     val answerCount: Long,

@@ -109,7 +109,7 @@ object Libs {
             const val runtime = "androidx.room:room-runtime:$version"
             const val compiler = "androidx.room:room-compiler:$version"
             const val ktx = "androidx.room:room-ktx:$version"
-            const val rxjava2 = "android.arch.persistence.room:rxjava2:$version"
+            const val rxjava2 = "androidx.room:room-rxjava2:$version"
             const val gson = "com.google.code.gson:gson:2.8.5"
             const val testing = "androidx.room:room-testing:$version"
         }

@@ -11,8 +11,7 @@ import com.koidev.stackoverflowstars.navigation.Screens
 import com.koidev.stackoverflowstars.utils.Paginator
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.observers.DisposableCompletableObserver
-import io.reactivex.observers.DisposableSingleObserver
+import io.reactivex.rxkotlin.subscribeBy
 import ru.terrakok.cicerone.Router
 import timber.log.Timber
 
@@ -48,7 +47,6 @@ class QuestionListViewModel(
 
     }
 
-
     fun observeRenderState(): Observable<Paginator.State> = renderState
 
     fun onItemClick(item: Question) {
@@ -63,45 +61,6 @@ class QuestionListViewModel(
 
     fun refreshEvents() = paginator.proceed(Paginator.Action.Refresh)
 
-
-    private inner class ObserveGetQuestionsList : DisposableCompletableObserver() {
-
-        override fun onError(e: Throwable) {
-            paginator.proceed(Paginator.Action.PageError(e))
-            Timber.e("Loading questions list from network error: ${e.localizedMessage}")
-        }
-
-        override fun onComplete() {
-            Timber.e("Loading questions list from network success")
-            getQuestionsListFromDataBase()
-        }
-    }
-
-    private inner class ObserveClearDataBase : DisposableCompletableObserver() {
-
-        override fun onComplete() {
-            Timber.d("Clearing database complete")
-        }
-
-        override fun onError(e: Throwable) {
-            Timber.e("Clearing database error: ${e.localizedMessage}")
-        }
-
-    }
-
-    private inner class ObserveGetQuestionsFromDB : DisposableSingleObserver<List<Question>>() {
-
-        override fun onSuccess(t: List<Question>) {
-            paginator.proceed(Paginator.Action.NewPage(page, t))
-        }
-
-        override fun onError(e: Throwable) {
-            Timber.e("Loading questions list from database error: ${e.localizedMessage}")
-        }
-
-
-    }
-
     fun onBackPressed() {
         router.exit()
     }
@@ -113,24 +72,41 @@ class QuestionListViewModel(
     }
 
     private fun getQuestionsListFromDataBase() {
-        observeQuestionsListFromDataBase.execute(
-            observer = ObserveGetQuestionsFromDB(),
-            params = ""
-        )
+        observeQuestionsListFromDataBase.execute(params = null)
+            .subscribeBy(
+                {
+                    Timber.e("Loading questions list from database error: ${it.localizedMessage}")
+                },
+                {
+                    paginator.proceed(Paginator.Action.NewPage(page, it))
+                }
+            ).disposedBy(subscriptions)
     }
 
     private fun loadNewPage(page: Int) {
-        this.page = page
-        getQuestionsList.execute(
-            observer = ObserveGetQuestionsList(),
-            params = page
-        )
+        getQuestionsList.execute(page)
+            .subscribeBy(
+                {
+                    paginator.proceed(Paginator.Action.PageError(it))
+                },
+                {
+                    Timber.e("Loading questions list from network success")
+                    getQuestionsListFromDataBase()
+                }
+            )
+            .disposedBy(subscriptions)
     }
 
     private fun clearDataBase() {
-        clearDataBase.execute(
-            observer = ObserveClearDataBase()
-        )
+        clearDataBase.execute()
+            .subscribeBy(
+                {
+                    Timber.e("Clearing database error: ${it.localizedMessage}")
+                },
+                {
+                    Timber.d("Clearing database complete")
+                }
+            ).disposedBy(subscriptions)
     }
 
     private fun refreshProject() {
