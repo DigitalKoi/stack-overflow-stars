@@ -81,6 +81,8 @@ dependencies {
     implementation(Libs.RxJava.rxKotlin)
     implementation(Libs.RxJava.rxAndroid)
     implementation(Libs.RxJava.rxRelay)
+    implementation(Libs.RxJava.rxBinding)
+    implementation(Libs.RxJava.rxBindingAppCompat)
 
     implementation(Libs.Dagger.androidSupport)
     kapt(Libs.Dagger.compiler)

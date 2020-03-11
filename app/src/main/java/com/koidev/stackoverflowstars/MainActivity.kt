@@ -1,6 +1,7 @@
 package com.koidev.stackoverflowstars
 
 import android.os.Bundle
+import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.koidev.stackoverflowstars.mvvm.vmodel.QuestionListViewModel
@@ -54,6 +55,12 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         Timber.d("onDestroy")
         super.onDestroy()
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_question_search, menu)
+        return true
+    }
+
     private fun injectDependencies() {
         componentManager().createQuestionsListSubComponent().inject(this)
     }

@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Stack-overflow-stars</string>
 
+    <!-- region Menu -->
+    <string name="menu_search">Search</string>
+    <!-- endregion -->
+
     <!-- region Data format -->
     <string name="time_sec" formatted="false">%d sec</string>
     <string name="time_min" formatted="false">%d min</string>

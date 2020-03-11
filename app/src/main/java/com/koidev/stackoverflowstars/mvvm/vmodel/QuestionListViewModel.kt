@@ -27,6 +27,8 @@ class QuestionListViewModel(
 
     private val renderState = BehaviorRelay.create<Paginator.State>()
 
+    private val historyQuestionList = BehaviorRelay.create<List<Question>>()
+
     private var page = 1
 
     init {
@@ -47,6 +49,8 @@ class QuestionListViewModel(
     }
 
     fun observeRenderState(): Observable<Paginator.State> = renderState
+
+    fun observeHistoryList(): Observable<List<Question>> = historyQuestionList
 
     fun onItemClick(item: Question) {
 
@@ -70,14 +74,16 @@ class QuestionListViewModel(
         getQuestionsList.dispose()
     }
 
-    private fun getQuestionsListFromDataBase() {
-        observeQuestionsListFromDataBase.execute(params = null)
+    fun getQuestionsListFromDataBase(query: String = "") {
+        observeQuestionsListFromDataBase.execute(query)
             .subscribeBy(
                 {
                     Timber.e("Loading questions list from database error: ${it.localizedMessage}")
                 },
                 {
                     paginator.proceed(Paginator.Action.NewPage(page, it))
+                    //TODO: move to other fragment
+                    historyQuestionList.accept(it)
                 }
             ).disposedBy(subscriptions)
     }
