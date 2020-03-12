@@ -81,6 +81,8 @@ class HistoryQuestionAdapter(
                 scoreProfile.text = item.owner.reputation.prettyCount()
                 timeAgoText.text = item.creationDate.humanTime(containerView.resources)
 
+                badgesContainer.text = item.tags.joinToString(separator = " ")
+
                 Glide.with(imageProfile)
                     .load(item.owner.profileImage)
                     .apply(RequestOptions.circleCropTransform())
