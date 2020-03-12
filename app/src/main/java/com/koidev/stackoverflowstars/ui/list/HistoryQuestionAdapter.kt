@@ -1,5 +1,7 @@
 package com.koidev.stackoverflowstars.ui.list
 
+import android.os.Build
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -68,7 +70,7 @@ class HistoryQuestionAdapter(
 
             containerView.apply {
                 nameProfile.text = item.owner.displayName
-                answerTitle.text = item.title
+                answerTitle.text = item.title.humanText()
                 answersCount.apply {
                     text = item.answerCount.prettyCount()
                     setTextColor(item.isAnswered)
@@ -104,5 +106,16 @@ class HistoryQuestionAdapter(
                 }
             )
         }
+
+        //TODO: move to mapper
+        private fun String.humanText(): String =
+            when {
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.N -> {
+                    Html.fromHtml(this, Html.FROM_HTML_MODE_LEGACY).toString()
+                }
+                else -> {
+                    Html.fromHtml(this).toString()
+                }
+            }
     }
 }

@@ -57,7 +57,7 @@ class QuestionListViewModel(
     }
 
     fun routeToQuestionsList() {
-        router.navigateTo(Screens.QuestionsListScreen())
+        router.replaceScreen(Screens.QuestionsListScreen())
     }
 
     fun loadNextEventsPage() = paginator.proceed(Paginator.Action.LoadMore)
@@ -84,6 +84,8 @@ class QuestionListViewModel(
                     paginator.proceed(Paginator.Action.NewPage(page, it))
                     //TODO: move to other fragment
                     historyQuestionList.accept(it)
+                    if (it.isEmpty() && query == "") refreshProject()
+                    Timber.e("Loading questions list from database success with size list ${it.size}")
                 }
             ).disposedBy(subscriptions)
     }
@@ -95,7 +97,7 @@ class QuestionListViewModel(
                     paginator.proceed(Paginator.Action.PageError(it))
                 },
                 {
-                    Timber.e("Loading questions list from network success")
+                    Timber.e("Loading questions list from network success with page $page")
                     getQuestionsListFromDataBase()
                 }
             )

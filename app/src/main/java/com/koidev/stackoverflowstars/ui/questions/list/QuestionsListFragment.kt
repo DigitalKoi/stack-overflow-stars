@@ -143,7 +143,6 @@ class QuestionsListFragment : BaseFragment() {
     }
 
     override fun onBackPressed() {
-        viewModel.onBackPressed()
     }
 
     private fun showPaginalQuestionsList(isShown: Boolean) {
