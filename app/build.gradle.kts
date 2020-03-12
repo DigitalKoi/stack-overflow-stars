@@ -99,6 +99,7 @@ dependencies {
 
     implementation(Libs.timber)
     implementation(Libs.stetho)
+    implementation("com.google.android:flexbox:1.0.0")
 
     debugImplementation(Libs.leakCanary)
 

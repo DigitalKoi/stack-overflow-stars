@@ -92,6 +92,18 @@
             tools:text="@tools:sample/lorem/random" />
 
         <TextView
+            android:id="@+id/badgesContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_marginEnd="@dimen/dp_4"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/answerTitle"
+            app:layout_constraintStart_toStartOf="@id/answerTitle"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <TextView
             android:id="@+id/scoreProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -106,7 +118,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="@dimen/dp_8"
+            app:layout_constraintTop_toBottomOf="@id/badgesContainer"
             app:layout_constraintEnd_toStartOf="@id/scoreProfile">
 
             <ImageView

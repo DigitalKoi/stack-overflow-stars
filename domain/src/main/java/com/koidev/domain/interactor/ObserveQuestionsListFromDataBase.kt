@@ -17,7 +17,8 @@ class ObserveQuestionsListFromDataBase(
             .map { questions ->
 //                if (params.isNullOrEmpty()) return questions
                 questions.filter { item ->
-                    item.title.contains(params as String)
+                    val tags = item.tags.filter { it.contains(params as String) }
+                    item.title.contains(params as String) || tags.isNotEmpty()
                 }
             }
 
