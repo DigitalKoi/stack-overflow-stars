@@ -35,7 +35,7 @@ class NetworkModule(
         val interceptors = listOf(
             apiRequestInterceptor,
             apiResponseInterceptor,
-            mockResponseInterceptor,
+//            mockResponseInterceptor,
             stethoInterceptor
         )
 
@@ -60,7 +60,7 @@ class NetworkModule(
         .Builder()
         .decodeScenarioPathWith(SingleFilePolicy("orgs/kotlin/repos.json"))
         .loadFileWith(context.assets::open)
-        .setInterceptorStatus(MockResponseInterceptor.Mode.ENABLED)
+        .setInterceptorStatus(MockResponseInterceptor.Mode.DISABLED)
         .parseScenariosWith(GsonMapper())
         .addFakeNetworkDelay(500)
         .build()

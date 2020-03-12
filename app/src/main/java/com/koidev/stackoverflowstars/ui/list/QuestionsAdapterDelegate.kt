@@ -60,9 +60,6 @@ class QuestionsAdapterDelegate(
 
         private lateinit var item: Question
 
-        init {
-            containerView.setOnClickListener { clickListenerItem(item) }
-        }
 
         fun bind(item: Question) {
             this.item = item
@@ -89,6 +86,10 @@ class QuestionsAdapterDelegate(
                     .subscribe { clickListenerProfile(item) }
                     .disposedBy(subscriptions)
 
+                containerView.clicks()
+                    .filterRapidClicks()
+                    .subscribe { clickListenerItem(item) }
+                    .disposedBy(subscriptions)
             }
         }
 

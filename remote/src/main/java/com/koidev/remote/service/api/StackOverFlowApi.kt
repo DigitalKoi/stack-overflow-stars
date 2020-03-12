@@ -7,11 +7,11 @@ import retrofit2.http.Query
 
 interface StackOverFlowApi {
 
-//    @GET("questions")
-    @GET("orgs/kotlin/repos?")
+    @GET("questions")
+//    @GET("orgs/kotlin/repos?")
     fun getQuestions(
         @Query("page") page: Int,
-        @Query("pagesize") size: Int = 10,
+        @Query("pagesize") size: Int = 20,
         @Query("order") order: String = "desc",
         @Query("sort") sort: String = "activity",
         @Query("site") site: String = "stackoverflow"
