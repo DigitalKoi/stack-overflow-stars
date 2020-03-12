@@ -3,7 +3,8 @@ package com.koidev.stackoverflowstars.ui.list
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.res.ResourcesCompat
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -14,6 +15,8 @@ import com.koidev.domain.common.disposedBy
 import com.koidev.stackoverflowstars.R
 import com.koidev.stackoverflowstars.utils.diff.QuestionsDiffUtil
 import com.koidev.stackoverflowstars.utils.filterRapidClicks
+import com.koidev.stackoverflowstars.utils.humanTime
+import com.koidev.stackoverflowstars.utils.prettyCount
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_question.view.*
@@ -64,35 +67,42 @@ class HistoryQuestionAdapter(
             this.item = item
 
             containerView.apply {
-                userName.text = item.owner.displayName
-                question.text = item.title
-                answerCount.text = item.answerCount.toString()
-                Glide.with(userImage)
+                nameProfile.text = item.owner.displayName
+                answerTitle.text = item.title
+                answersCount.apply {
+                    text = item.answerCount.prettyCount()
+                    setTextColor(item.isAnswered)
+                }
+                answersText.setTextColor(item.isAnswered)
+                viewsCount.text = item.viewCount.prettyCount()
+                votesCount.text = item.score.prettyCount()
+                scoreProfile.text = item.owner.reputation.prettyCount()
+                timeAgoText.text = item.creationDate.humanTime(containerView.resources)
+
+                Glide.with(imageProfile)
                     .load(item.owner.profileImage)
                     .apply(RequestOptions.circleCropTransform())
-                    .into(userImage)
-
-                statusIcon.apply {
-                    setImageDrawable(
-                        ResourcesCompat.getDrawable(
-                            resources,
-                            if (item.isAnswered) R.drawable.ic_question_green else R.drawable.ic_question_grey,
-                            null
-                        )
-                    )
-                }
+                    .into(imageProfile)
 
                 containerView.clicks()
                     .filterRapidClicks()
                     .subscribe { onClickItem(item) }
                     .disposedBy(subscriptions)
 
-                userImage.clicks()
+                profileContainer.clicks()
                     .filterRapidClicks()
                     .subscribe { onClickImage(item) }
                     .disposedBy(subscriptions)
 
             }
+        }
+
+        private fun TextView.setTextColor(isAnswered: Boolean) {
+            this.setTextColor(when {
+                    isAnswered -> ContextCompat.getColor(containerView.context, android.R.color.holo_green_dark)
+                    else -> ContextCompat.getColor(containerView.context, android.R.color.darker_gray)
+                }
+            )
         }
     }
 }

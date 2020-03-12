@@ -48,8 +48,11 @@ class QuestionsListFragment : BaseFragment() {
                     o.isSame(n)
                 } else false
             },
-            QuestionsAdapterDelegate { viewModel.onItemClick(it) }
-        )
+            QuestionsAdapterDelegate(
+                clickListenerItem = viewModel::onItemClick,
+                clickListenerProfile = viewModel::onItemClick,
+                subscriptions = subscriptions
+            ))
     }
 
     private val historyQuestionAdapter by lazy {

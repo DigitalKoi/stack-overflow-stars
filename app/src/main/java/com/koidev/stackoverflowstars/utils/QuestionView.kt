@@ -3,10 +3,17 @@ package com.koidev.stackoverflowstars.utils
 import android.content.res.Resources
 import com.koidev.stackoverflowstars.R
 import org.threeten.bp.Duration
+import org.threeten.bp.Instant
+import org.threeten.bp.LocalDateTime
+import org.threeten.bp.ZoneId
 import org.threeten.bp.ZonedDateTime
 import org.threeten.bp.format.DateTimeFormatter
 import retrofit2.HttpException
 import java.io.IOException
+import java.text.DecimalFormat
+import kotlin.math.floor
+import kotlin.math.log10
+import kotlin.math.pow
 
 fun Throwable.userMessage(resources: Resources) = when (this) {
     is HttpException -> when (this.code()) {
@@ -42,8 +49,42 @@ fun ZonedDateTime.humanTime(resources: Resources): String {
     return resources.getString(R.string.time_ago, timeStr)
 }
 
-//@DrawableRes
-//fun AnswerIcon.getIcon() = when (this) {
-//    AnswerIcon.OPEN -> R.drawable.ic_event_created_24dp
-//    AnswerIcon.CLOSE -> R.drawable.ic_event_imported_24dp
-//}
+fun Long.humanTime(resources: Resources): String {
+
+    var time = this
+
+    if (time < 1000000000000L) {
+        time *= 1000;
+    }
+
+    val instant = Instant.ofEpochMilli(time)
+    val localDateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault())
+    val delta = Duration.between(localDateTime, ZonedDateTime.now())
+        .seconds
+        .let { maxOf(0, it) }
+
+    val timeStr = when {
+        delta < 60 -> resources.getString(R.string.time_sec, delta)
+        delta < 60 * 60 -> resources.getString(R.string.time_min, delta / 60)
+        delta < 60 * 60 * 24 -> resources.getString(R.string.time_hour, delta / (60 * 60))
+        delta < 60 * 60 * 24 * 7 -> resources.getString(R.string.time_day, delta / (60 * 60 * 24))
+        else -> return localDateTime.toLocalDate().format(DATE_FORMAT)
+    }
+
+    return resources.getString(R.string.time_ago, timeStr)
+}
+
+fun Long.prettyCount(): String? {
+    val suffix = charArrayOf(' ', 'k', 'M', 'B', 'T', 'P', 'E')
+    val value = floor(log10(this.toDouble())).toInt()
+    val base = value / 3
+    return if (value >= 3 && base < suffix.size) {
+        DecimalFormat("#0.0").format(
+            this / 10.0.pow(base * 3.toDouble())
+        ) + suffix[base]
+    } else {
+        DecimalFormat("#,##0").format(this)
+    }
+}
+
+
