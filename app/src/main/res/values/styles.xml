@@ -8,4 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="scoresTextViewInactive" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/sp_12</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+    </style>
+
+    <style name="questionTextView" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/sp_18</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/holo_blue_dark</item>
+        <item name="android:maxLines">3</item>
+    </style>
+
 </resources>

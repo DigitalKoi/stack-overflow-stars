@@ -33,4 +33,7 @@
     <string name="empty_data">Empty data</string>
     <string name="empty_data_description">You have not data yet.\nPlease try again later.</string>
     <!-- endregion -->
+    <string name="votes">votes</string>
+    <string name="answers">answers</string>
+    <string name="views">views</string>
 </resources>
